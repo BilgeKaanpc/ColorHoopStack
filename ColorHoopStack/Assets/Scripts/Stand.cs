@@ -19,4 +19,22 @@ public class Stand : MonoBehaviour
     {
         return Circles[^1];
     }
+    public GameObject takeLastInput()
+    {
+        return inputs[emptyInput];
+    }
+
+    public void ChangeInput(GameObject deletedObject)
+    {
+        Circles.Remove(deletedObject);
+        if (Circles.Count != 0)
+        {
+            emptyInput--;
+            Circles[^1].GetComponent<Circle>().canMove = true;
+        }
+        else
+        {
+            emptyInput = 0;
+        }
+    }
 }

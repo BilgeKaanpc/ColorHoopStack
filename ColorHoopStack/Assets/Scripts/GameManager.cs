@@ -27,7 +27,14 @@ public class GameManager : MonoBehaviour
                 {
                     if(activeObject != null && activePlatform != hit.collider.gameObject)
                     {
+                        Stand _Stand = hit.collider.GetComponent<Stand>();
+                        activePlatform.GetComponent<Stand>().ChangeInput(activeObject);
 
+                        _Circle.Move("changePosition",hit.collider.gameObject,_Stand.takeLastInput(),_Stand.position);
+                        _Stand.emptyInput++;
+                        _Stand.Circles.Add(activeObject);
+                        activeObject = null;
+                        activePlatform = null;
                     }
                     else
                     {
@@ -35,6 +42,12 @@ public class GameManager : MonoBehaviour
                         activeObject = _Stand.takeLastCircle();
                         _Circle = activeObject.GetComponent<Circle>();
                         canMove = true;
+
+                        if (_Circle.canMove)
+                        {
+                            _Circle.Move("pick",_Circle.mainStand,null,_Circle.mainStand.GetComponent<Stand>().position);
+                            activePlatform = _Circle.mainStand;
+                        }
                     }
                 }
             }
