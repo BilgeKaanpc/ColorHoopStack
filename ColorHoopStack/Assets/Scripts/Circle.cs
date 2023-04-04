@@ -14,6 +14,8 @@ public class Circle : MonoBehaviour
     GameObject _mainStand;
 
     bool picked, changePosition, join, turnBack;
+    float moveSpeed = .1f;
+
 
     public void Move(string progress, GameObject Stand = null, GameObject Input = null, GameObject movetoObject = null)
     {
@@ -38,11 +40,11 @@ public class Circle : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (picked)
         {
-            transform.position = Vector3.Lerp(transform.position, position.transform.position, .02f);
+            transform.position = Vector3.Lerp(transform.position, position.transform.position, moveSpeed);
 
             if (Vector3.Distance(transform.position, position.transform.position) < .10)
             {
@@ -51,7 +53,7 @@ public class Circle : MonoBehaviour
         }
         if (changePosition)
         {
-            transform.position = Vector3.Lerp(transform.position, position.transform.position, .02f);
+            transform.position = Vector3.Lerp(transform.position, position.transform.position, moveSpeed);
 
             if (Vector3.Distance(transform.position, position.transform.position) < .10)
             {
@@ -61,7 +63,7 @@ public class Circle : MonoBehaviour
         }
         if (join)
         {
-            transform.position = Vector3.Lerp(transform.position, mainInput.transform.position, .02f);
+            transform.position = Vector3.Lerp(transform.position, mainInput.transform.position, moveSpeed);
 
             if (Vector3.Distance(transform.position, mainInput.transform.position) < .10)
             {
@@ -78,7 +80,7 @@ public class Circle : MonoBehaviour
         }
         if (turnBack)
         {
-            transform.position = Vector3.Lerp(transform.position, mainInput.transform.position, .02f);
+            transform.position = Vector3.Lerp(transform.position, mainInput.transform.position, moveSpeed);
 
             if (Vector3.Distance(transform.position, mainInput.transform.position) < .10)
             {

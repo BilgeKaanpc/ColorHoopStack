@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class GameManager : MonoBehaviour
     public int targetColorCount;
     int completedColor;
 
-    void Start()
+    [SerializeField] AudioSource moveSound, sitSound;
+    public void RestartGame()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void Update()
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
             {
                 if(hit.collider !=null && hit.collider.CompareTag("Stand"))
                 {
+                    
                     if(activeObject != null && activePlatform != hit.collider.gameObject)
                     {
                         Stand _Stand = hit.collider.GetComponent<Stand>();
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
                         {
                             if (_Circle.color == _Stand.Circles[^1].GetComponent<Circle>().color)
                             {
+                                sitSound.Play();
                                 activePlatform.GetComponent<Stand>().ChangeInput(activeObject);
 
                                 _Circle.Move("changePosition", hit.collider.gameObject, _Stand.takeLastInput(), _Stand.position);
@@ -54,7 +58,7 @@ public class GameManager : MonoBehaviour
                         else if(_Stand.Circles.Count == 0)
                         {
                             activePlatform.GetComponent<Stand>().ChangeInput(activeObject);
-
+                            sitSound.Play();
                             _Circle.Move("changePosition", hit.collider.gameObject, _Stand.takeLastInput(), _Stand.position);
                             _Stand.emptyInput++;
                             _Stand.Circles.Add(activeObject);
@@ -77,6 +81,7 @@ public class GameManager : MonoBehaviour
                     }
                     else
                     {
+                        moveSound.Play();
                         Stand _Stand = hit.collider.GetComponent<Stand>();
                         activeObject = _Stand.takeLastCircle();
                         _Circle = activeObject.GetComponent<Circle>();
