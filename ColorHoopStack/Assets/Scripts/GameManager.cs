@@ -28,11 +28,48 @@ public class GameManager : MonoBehaviour
                     if(activeObject != null && activePlatform != hit.collider.gameObject)
                     {
                         Stand _Stand = hit.collider.GetComponent<Stand>();
-                        activePlatform.GetComponent<Stand>().ChangeInput(activeObject);
 
-                        _Circle.Move("changePosition",hit.collider.gameObject,_Stand.takeLastInput(),_Stand.position);
-                        _Stand.emptyInput++;
-                        _Stand.Circles.Add(activeObject);
+                        if(_Stand.Circles.Count != 4 && _Stand.Circles.Count != 0)
+                        {
+                            if (_Circle.color == _Stand.Circles[^1].GetComponent<Circle>().color)
+                            {
+                                activePlatform.GetComponent<Stand>().ChangeInput(activeObject);
+
+                                _Circle.Move("changePosition", hit.collider.gameObject, _Stand.takeLastInput(), _Stand.position);
+                                _Stand.emptyInput++;
+                                _Stand.Circles.Add(activeObject);
+                                activeObject = null;
+                                activePlatform = null;
+                            }
+                            else
+                            {
+                                _Circle.Move("Input");
+                                activeObject = null;
+                                activePlatform = null;
+                            }
+
+
+                        }
+                        else if(_Stand.Circles.Count == 0)
+                        {
+                            activePlatform.GetComponent<Stand>().ChangeInput(activeObject);
+
+                            _Circle.Move("changePosition", hit.collider.gameObject, _Stand.takeLastInput(), _Stand.position);
+                            _Stand.emptyInput++;
+                            _Stand.Circles.Add(activeObject);
+                            activeObject = null;
+                            activePlatform = null;
+                        }
+                        else
+                        {
+                            _Circle.Move("Input");
+                            activeObject = null;
+                            activePlatform = null;
+                        }
+                    }
+                    else if (activePlatform == hit.collider.gameObject)
+                    {
+                        _Circle.Move("Input");
                         activeObject = null;
                         activePlatform = null;
                     }

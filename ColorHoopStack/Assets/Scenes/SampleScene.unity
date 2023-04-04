@@ -460,7 +460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &192004639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192004638}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.06748586, z: -2.38}
+  m_LocalPosition: {x: -1.25, y: 0.06748586, z: -2.38}
   m_LocalScale: {x: 17.991678, y: 17.991674, z: 17.991674}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1413,7 +1413,7 @@ MonoBehaviour:
   mainStand: {fileID: 3677170213171220983}
   mainInput: {fileID: 7634880595539092243}
   canMove: 0
-  color: Red
+  color: Purple
   _GameManager: {fileID: 391744220}
 --- !u!23 &1356875320
 MeshRenderer:
@@ -1435,8 +1435,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 2100000, guid: 6245f695b1a5f074eaf7b715fc67c157, type: 2}
+  - {fileID: 2100000, guid: c6412fc3f718e3a4bb00be398799eac0, type: 2}
+  - {fileID: 2100000, guid: c6412fc3f718e3a4bb00be398799eac0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   mainStand: {fileID: 2077606740}
   mainInput: {fileID: 1246912644}
   canMove: 1
-  color: Red
+  color: Purple
   _GameManager: {fileID: 391744220}
 --- !u!23 &1385693556
 MeshRenderer:
@@ -1522,8 +1522,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 2100000, guid: 6245f695b1a5f074eaf7b715fc67c157, type: 2}
+  - {fileID: 2100000, guid: c6412fc3f718e3a4bb00be398799eac0, type: 2}
+  - {fileID: 2100000, guid: c6412fc3f718e3a4bb00be398799eac0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   - {fileID: 2075465664}
   - {fileID: 2112302581}
   Circles: []
-  emptyInput: 4
+  emptyInput: 0
 --- !u!4 &1409049268
 Transform:
   m_ObjectHideFlags: 0
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   - {fileID: 117374060}
   - {fileID: 1356875317}
   - {fileID: 2121452782}
-  emptyInput: 0
+  emptyInput: 4
 --- !u!65 &4056686079871781711
 BoxCollider:
   m_ObjectHideFlags: 0

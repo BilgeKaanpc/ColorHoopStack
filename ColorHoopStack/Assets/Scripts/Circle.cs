@@ -30,10 +30,7 @@ public class Circle : MonoBehaviour
                 changePosition = true;
                 break;
             case "Input":
-
-                break;
-            case "turnBack":
-
+                turnBack = true;
                 break;
             default:
                 break;
@@ -76,6 +73,17 @@ public class Circle : MonoBehaviour
                 {
                     mainStand.GetComponent<Stand>().Circles[^2].GetComponent<Circle>().canMove = false;
                 }
+                _GameManager.canMove = false;
+            }
+        }
+        if (turnBack)
+        {
+            transform.position = Vector3.Lerp(transform.position, mainInput.transform.position, .02f);
+
+            if (Vector3.Distance(transform.position, mainInput.transform.position) < .10)
+            {
+                transform.position = mainInput.transform.position;
+                turnBack = false;
                 _GameManager.canMove = false;
             }
         }
