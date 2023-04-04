@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     Circle _Circle;
     public bool canMove;
 
-    public int targetStandCount;
-    int completedStand;
+    public int targetColorCount;
+    int completedColor;
 
     void Start()
     {
@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
                                 _Circle.Move("changePosition", hit.collider.gameObject, _Stand.takeLastInput(), _Stand.position);
                                 _Stand.emptyInput++;
                                 _Stand.Circles.Add(activeObject);
+                                _Stand.ControlCircle();
                                 activeObject = null;
                                 activePlatform = null;
                             }
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
                             _Circle.Move("changePosition", hit.collider.gameObject, _Stand.takeLastInput(), _Stand.position);
                             _Stand.emptyInput++;
                             _Stand.Circles.Add(activeObject);
+                            _Stand.ControlCircle();
                             activeObject = null;
                             activePlatform = null;
                         }
@@ -88,6 +90,15 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void StandCompleted()
+    {
+        completedColor++;
+        if(completedColor == targetColorCount)
+        {
+
         }
     }
 }
